@@ -4,7 +4,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Send, Bot, Upload, Image as ImageIcon } from "lucide-react";
 import { ImageUploader } from "./ImageUploader";
-import { SymptomChatbot } from "./SymtomChatbot";
 
 type Message = {
 	id: number;
