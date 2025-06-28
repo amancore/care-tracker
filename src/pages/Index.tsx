@@ -67,8 +67,11 @@ const Index = () => {
 					<div className="flex justify-between items-center h-16">
 						<div className="flex items-center space-x-3">
 							<Activity className="h-8 w-8 text-blue-600" />
-							<span className="text-2xl font-bold text-gray-900">careTracker</span>
+							<span className="text-2xl font-bold text-gray-900">
+								careTracker
+							</span>
 						</div>
+						
 						<NavLink to="/dashboard">
 							<Button className="bg-blue-600 hover:bg-blue-700 text-white">
 								Get Started
