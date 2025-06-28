@@ -1,10 +1,9 @@
 import { useState, useRef } from "react";
 import { BackButton } from "@/components/BackButton";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Search, Filter, Download, FileText, Image, Mic, Calendar, Edit, Trash2, Eye, } from "lucide-react";
-
 interface MediRecord {
 	id: number;
 	date: string;
@@ -18,7 +17,6 @@ interface MediRecord {
 	icon: React.ComponentType<{ className?: string }>;
 	color: string;
 }
-
 export default function MedicalHistory() {
 	const [rec, setRec] = useState<MediRecord[]>([
 		{
@@ -87,7 +85,6 @@ export default function MedicalHistory() {
 			color: "text-orange-600 bg-orange-100",
 		},
 	]);
-
 	const [stemp, setStemp] = useState("");
 	const [filter, setFilter] = useState<MediRecord["type"] | "all">(
 		"all"
@@ -98,7 +95,6 @@ export default function MedicalHistory() {
 	const [isView, setisView] = useState(false);
 	const [edit, setEdit] = useState(false);
 	const [editCon, setEditCon] = useState("");
-
 	function search() {
 		return rec.filter((record) => {
 			const temp =
@@ -141,7 +137,6 @@ export default function MedicalHistory() {
 					View and manage your health rec in one place.
 				</p>
 			</header>
-
 			<Card className="mb-6">
 				<CardContent className="p-6 flex flex-col sm:flex-row gap-4">
 					<div className="flex-1 relative">
@@ -171,7 +166,6 @@ export default function MedicalHistory() {
 					</Button>
 				</CardContent>
 			</Card>
-
 			<div className="space-y-4">
 				{seenRec.length === 0 && (
 					<Card>
@@ -186,7 +180,6 @@ export default function MedicalHistory() {
 						</CardContent>
 					</Card>
 				)}
-
 				{seenRec.map((record) => (
 					<Card
 						key={record.id}
@@ -246,14 +239,13 @@ export default function MedicalHistory() {
 											onClick={() => delRecord(record.id)}>
 											<Trash2 className="h-4 w-4" />
 										</Button>
-								</div>
+									</div>
 								</div>
 							</div>
 						</CardHeader>
 					</Card>
 				))}
 			</div>
-
 			{isView && currRec && (
 				<div className="fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center z-50">
 					<div className="bg-white rounded-lg shadow-lg p-8 max-w-lg w-full relative">
@@ -265,17 +257,16 @@ export default function MedicalHistory() {
 						<h2 className="text-xl font-bold mb-4">{currRec.title}</h2>
 						{edit ? (
 							<textarea
-								className="w-full h-40 border border-gray-300 p-2 rounded"
 								value={editCon}
-								onChange={(e) => seteditCon(e.target.value)}
+								onChange={(e) => setEditCon(e.target.value)}
+								rows={8}
+								className="w-full border rounded"
 							/>
 						) : (
-							<p className="text-gray-700 mb-4">{currRec.summary}</p>
+							<div>{currRec.summary}</div>
 						)}
 						<div className="text-sm text-gray-500 mb-4 space-y-1">
-							<div>
-								Date: {new Date(currRec.date).toLocaleDateString()}
-							</div>
+							<div>Date: {new Date(currRec.date).toLocaleDateString()}</div>
 							<div>Doctor: {currRec.doctor}</div>
 							<div>Category: {currRec.category}</div>
 							<div>Status: {currRec.status}</div>
@@ -295,7 +286,13 @@ export default function MedicalHistory() {
 								<Button
 									variant="outline"
 									onClick={() => {
-										// Save edits logic here
+										setRec(prev =>
+											prev.map(r =>
+												r.id === currRec.id
+													? { ...r, summary: editCon } 
+													: r
+											)
+										);
 										setisView(false);
 									}}>
 									Save
