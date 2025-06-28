@@ -12,7 +12,6 @@ import DoctorAI from "./pages/DoctorAI";
 import MedicalHistory from "./pages/MedicalHistory";
 import Reminders from "./pages/Reminders";
 import NotFound from "./pages/NotFound";
-import { SymptomChatbot } from "./pages/SymtomChatbot";
 import MedicalAi from "./pages/MedicalAi";
 
 const queryClient = new QueryClient();
