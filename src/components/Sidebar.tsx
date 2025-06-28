@@ -13,11 +13,12 @@ import {
 import { cn } from '@/lib/utils';
 
 const navigation = [
-  { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
-  { name: 'Report Summarizer', href: '/report-summarizer', icon: FileText },
-  { name: 'Doctor AI', href: '/doctor-ai', icon: Stethoscope },
-  { name: 'Medical History', href: '/medical-history', icon: History },
-  { name: 'Reminders', href: '/reminders', icon: Bell },
+	{ name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
+	{ name: "Report Summarizer", href: "/report-summarizer", icon: FileText },
+	{ name: "Doctor AI", href: "/doctor-ai", icon: Stethoscope },
+	{ name: "Medical History", href: "/medical-history", icon: History },
+	{ name: "Reminders", href: "/reminders", icon: Bell },
+	{ name: "Dieases Prediction", href: "/Dieases-prediction", icon: Bell },
 ];
 
 interface SidebarProps {

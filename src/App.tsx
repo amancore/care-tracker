@@ -12,6 +12,8 @@ import DoctorAI from "./pages/DoctorAI";
 import MedicalHistory from "./pages/MedicalHistory";
 import Reminders from "./pages/Reminders";
 import NotFound from "./pages/NotFound";
+import { SymptomChatbot } from "./pages/SymtomChatbot";
+import MedicalAi from "./pages/MedicalAi";
 
 const queryClient = new QueryClient();
 function AppContent() {
@@ -24,17 +26,18 @@ function AppContent() {
 		);
 	}
   return (
-    <Sidebar>
-      <Routes>
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/report-summarizer" element={<ReportSummarizer />} />
-        <Route path="/doctor-ai" element={<DoctorAI />} />
-        <Route path="/medical-history" element={<MedicalHistory />} />
-        <Route path="/reminders" element={<Reminders />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </Sidebar>
-  );
+		<Sidebar>
+			<Routes>
+				<Route path="/dashboard" element={<Dashboard />} />
+				<Route path="/report-summarizer" element={<ReportSummarizer />} />
+				<Route path="/doctor-ai" element={<DoctorAI />} />
+				<Route path="/medical-history" element={<MedicalHistory />} />
+				<Route path="/reminders" element={<Reminders />} />
+				<Route path="/Dieases-prediction" element={<MedicalAi />} />
+				<Route path="*" element={<NotFound />} />
+			</Routes>
+		</Sidebar>
+	);
 }
 
 const App = () => (

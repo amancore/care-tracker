@@ -106,7 +106,6 @@ const Dashboard = () => {
 				))}
 			</div>
 
-			{/* Recent Activity & Quick Actions */}
 			<div className="grid lg:grid-cols-2 gap-6">
 				<Card className="bg-white border border-gray-200">
 					<CardHeader>

@@ -13,10 +13,7 @@ import {
 	Eye,
 	Stethoscope,
 } from "lucide-react";
-
-// Main component for the DoctorAI chat interface
 const DoctorAI = () => {
-	// State to manage chat messages
 	type Message = {
 		id: number;
 		sender: string;
@@ -38,11 +35,7 @@ const DoctorAI = () => {
 			timestamp: new Date().toLocaleTimeString(),
 		},
 	]);
-
-	// State to manage the new message input
 	const [newMessage, setNewMessage] = useState("");
-
-	// List of medical specialties with icons and colors
 	const specialties = [
 		{ name: "Cardiology", icon: Heart, color: "text-red-600 bg-red-100" },
 		{ name: "Neurology", icon: Brain, color: "text-purple-600 bg-purple-100" },
@@ -54,16 +47,12 @@ const DoctorAI = () => {
 			color: "text-orange-600 bg-orange-100",
 		},
 	];
-
-	// List of quick questions for the user to ask
 	const quickQuestions = [
 		"I've had a headache for days",
 		"I'm feeling chest tightness",
 		"I can't sleep well",
 		"I'm always tired",
 	];
-
-	// Function to handle sending a new message
 	const handleSendMessage = () => {
 		if (!newMessage.trim()) return;
 
@@ -75,8 +64,6 @@ const DoctorAI = () => {
 		};
 		setMessages([...messages, userMessage]);
 		setNewMessage("");
-
-		// Simulate AI response after a delay
 		setTimeout(() => {
 			const aiResponse = {
 				id: messages.length + 2,
@@ -93,7 +80,6 @@ const DoctorAI = () => {
 		}, 800);
 	};
 
-	/* this line will generate based on your model  */
 	const getAIReply = (msg) => {
 		const m = msg.toLowerCase();
 		if (m.includes("headache")) {
@@ -108,7 +94,6 @@ const DoctorAI = () => {
 	const handleQuickQuestion = (q) => {
 		setNewMessage(q);
 	};
-
 	return (
 		<div className="p-6 bg-gray-50 min-h-screen">
 			<BackButton />
