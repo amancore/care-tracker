@@ -11,11 +11,20 @@ const getFileIcon = (file: File) => {
 	if (file.type.startsWith('text/')) return <FileX className="h-5 w-5 text-orange-600 mr-2" />;
 	return <FileText className="h-5 w-5 text-gray-400 mr-2" />;
 };
-
+interface AnalysisResult {
+	category: string;
+	summary: string;
+	keyFindings: string[];
+	recommendations: string[];
+	urgency: "low" | "medium" | "high";
+}
 const ReportSummarizer = () => {
 	const [dragActive, setDragActive] = useState(false);
 	const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
-	const [analysisResult, setAnalysisResult] = useState<any>(null);
+	const [analysisResult, setAnalysisResult] = useState<AnalysisResult | null>(
+		null
+	);
+
 	const fileInputRef = useRef<HTMLInputElement>(null);
 	const handleSaveToHistory = () => {
 		alert('Analysis saved to history!');
